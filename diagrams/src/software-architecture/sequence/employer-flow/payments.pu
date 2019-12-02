@@ -1,0 +1,16 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor Employer
+participant PaymentsService
+
+activate Employer
+Employer -> PaymentsService:  pay for the material
+
+activate PaymentsService
+
+Employer -> PaymentsService : Make payment
+PaymentsService --> Employer: Confirms payments is success
+@enduml

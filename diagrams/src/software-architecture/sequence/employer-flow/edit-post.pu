@@ -1,0 +1,15 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor Employer
+participant ProjectService
+
+activate Employer
+Employer -> ProjectService: Edit my post
+
+activate ProjectService
+ProjectService -> ProjectService: Edit post
+ProjectService --> Employer: Confirms Edited
+@enduml

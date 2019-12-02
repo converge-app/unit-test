@@ -1,0 +1,16 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor User
+participant SearchService
+
+activate User
+User -> SearchService: Search keyword
+
+activate SearchService
+SearchService -> SearchService:search keyword
+SearchService --> User: Display result
+
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor User
+
+participant Settingsservice
+
+activate User
+User ->  Settingsservice: Change account settings
+
+activate  Settingsservice
+ Settingsservice ->  Settingsservice: Save and apply new settings
+ Settingsservice --> User: Comfirms account settings 
+@enduml

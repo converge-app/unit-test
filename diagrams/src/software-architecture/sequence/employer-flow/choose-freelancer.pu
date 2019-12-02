@@ -1,0 +1,15 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor Employer
+participant ProjectService
+
+activate Employer
+Employer -> ProjectService: Choose a freelancer
+
+activate ProjectService
+ProjectService -> ProjectService: Choosing freelancer
+ProjectService --> Employer: Confirms freelancer is selected
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor Employer
+participant ProjectService
+
+activate Employer
+Employer -> ProjectService: delete project
+
+activate ProjectService
+ProjectService -> ProjectService: deleted project
+ProjectService --> Employer: Confirms Project is deleted
+@enduml

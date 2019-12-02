@@ -1,0 +1,16 @@
+@startuml 
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor User
+participant Userservice
+
+activate User
+User -> Userservice: change information
+
+activate Userservice
+Userservice -> Userservice: Changes information
+Userservice --> User: Confirm user information is changed
+
+@enduml

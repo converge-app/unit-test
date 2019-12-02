@@ -1,0 +1,20 @@
+\chapter{Unit test}
+
+\section{Indledning}
+Der vil i dette dokument blive beskrevet hvordan systemets individuelle enheder / komponenter er blevet unit testet. I dette dokument vil der som det første være en gennemgang af fremgangsmåde, hvilken værktøjer der er blevet benyttet til det og hvordan er systemets to moduler blevet testet. 
+
+\section{Fremgangsmåde for tests}
+
+Unit testning er et niveau af softwaretest, hvor individuelle enheder / komponenter i en software testes. Formålet er at validere, at hver enhed af softwaren fungerer som designet. En enhed er den mindste testbare del af enhver software. Det har normalt en eller nogle få input og normalt en enkelt output. Grunden til at man udfører unit tests er at det løser fejl tidligt i udviklingsprocessen og sparer omkostninger. Det hjælper med at forstå udviklerne kodebasen og sætte dem i stand til hurtigt at foretage ændringer. Derudover hjælper unit tests med genanvendelse af kode.
+For at dette er muligt, er det nødvendigt at oprette mocks, da man ikke kan udfør enhedstestes uden mocks. Den måde det fungerer på er at man mocker det objekt der arbejder med at udfylde for manglende dele af et program. Der kan for eksempel være en funktion, der har brug for variabler eller objekter, der ikke er oprettet endnu. For at teste funktion, mockes objektet, som bruges til at hjælpe med enhedstest.
+Den fremgangsmåde der er blevet brugt for at finde cases der skulle testes, er der blevet kigget på hver eneklt API’s service. Her er der blevet kigget på hvert enkelt metoder som servicen indeholdt og herefter er der blevet oprettet antal test cases der var nødvendigt for at dække de enkelte metoder. De enkelte test cases er opdelt i tre sektioner Arrange, Act og Assert. 
+\begin{itemize}
+    \item \textbf{Arrange:}  Her bliver alle forudsætninger og input opsættes.
+    \item \textbf{Act:} Udfør de nødvendige handlinger til testen. 
+    \item \textbf{Assert:} Kontroller resultatet af testen.
+    
+\end{itemize}
+
+\section{Værktøjer brugt til test}
+
+Til at test Converge SPA er der blevet benyttet Selenium, som er et automatiseret testværktøj for webapplikationer.  Til Server applikationen er der blevet benyttet xunit til at udfør unit test. Derudover er der blevet benyttet moq, som er et bibliotek til .NET og gør mocking af objekter nemmere. 

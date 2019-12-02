@@ -1,0 +1,16 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor Freelancer
+participant PaymentsService
+
+activate Freelancer
+Freelancer -> PaymentsService: Show employer profile
+
+activate PaymentsService
+PaymentsService -> PaymentsService: Employer profile
+PaymentsService --> Freelancer: Confirms showing employer profile
+
+@enduml

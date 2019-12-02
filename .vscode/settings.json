@@ -1,0 +1,22 @@
+{
+  "latex-workshop.latex.search.rootFiles.include": [
+    "requirements-specification.tex",
+    "requirements-specification/*.tex",
+    "**/*.tex"
+  ],
+  "files.exclude": {
+    "**/*-blx.bib": true,
+    "**/*.aux": true,
+    "**/*.bbl": true,
+    "**/*.blg": true,
+    "**/*.fdb*": true,
+    "**/*.fls": true,
+    "**/*.hst": true,
+    "**/*.log": true,
+    "**/*.out": true,
+    "**/*.run.xml": true,
+    "**/*.synctex.gz": true,
+    "**/*.toc": true,
+    "**/*.ver": true
+  }
+}

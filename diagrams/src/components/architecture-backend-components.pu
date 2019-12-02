@@ -1,0 +1,25 @@
+@startuml BackendComponents 
+
+skinparam BackgroundColor transparent
+skinparam Monochrome true
+skinparam shadowing false
+
+!include Components.iuml
+
+note bottom of gateway : Gateway is connected to all services
+
+auth --> users                  
+projects --> workspace     
+payments --> accounts           
+bidding --> projects
+bidding --> audit
+workspace --> audit
+payments --> audit
+users --> audit
+
+bidding --> users
+chat --> users
+profiles --> users
+projects --> users
+
+@enduml

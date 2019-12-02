@@ -1,0 +1,79 @@
+@startuml
+
+skinparam monochrome true
+
+package "Domænemodel Converge" {
+object User
+object Login{
+   Email
+  Password 
+  
+  }
+
+object Signup{
+   Fornavn
+  Efternavn
+  Email
+ Password 
+  }
+object Portfolio{
+  Name
+  Skills
+  Experience
+  Jobs rating
+  }
+object Categories{
+  3D logo
+  Video animation
+  Programming and tech
+  Graphics and desing
+  }
+object PostProject{
+  Project title
+  Category
+  Subcategory
+  Description
+  UploadFil
+  workType
+  }
+object Jobs
+object Chat{
+  Messages
+  }
+object VideoChat
+object Payments{
+  Balance
+  Amount
+  Deposit
+  Withdraw
+  }
+object Search
+object Dashboard
+
+
+User --> Login: Has a
+User --> Signup: Can
+User --> Portfolio: Has  a 
+User --> Categories: Can choose
+User --> PostProject: can 
+User --> Jobs: Can take 
+User --> Chat: Sends / resieves messages
+User --> VideoChat: Can talk in real time
+User --> Payments: can
+User --> Search: Can search a job 
+  
+
+
+Login --> Dashboard: Access to
+Dashboard --> Portfolio:  Acces to
+Dashboard --> Chat:  Acces to
+Dashboard --> VideoChat:  Acces to
+Dashboard --> Jobs:  Acces to
+Dashboard --> Categories: Acces to
+Dashboard --> Payments:  Acces to
+Dashboard --> Search:  Acces to
+Dashboard --> PostProject:  Acces to
+  
+}
+
+@enduml

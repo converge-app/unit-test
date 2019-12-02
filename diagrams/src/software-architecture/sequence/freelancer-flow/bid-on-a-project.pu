@@ -1,0 +1,15 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor Freelancer
+participant JobsService
+
+activate Freelancer
+Freelancer -> JobsService: Bid on a project
+
+activate JobsService
+JobsService -> JobsService: Create a bid
+JobsService --> Freelancer: Confirms bid is created
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor Admin
+participant Authenticate
+
+activate Admin
+Admin -> Authenticate: Delete a user
+
+activate Authenticate
+Authenticate -> Authenticate: Checking for user
+Authenticate --> Admin: Confirms user is deleted
+
+
+@enduml

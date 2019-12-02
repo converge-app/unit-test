@@ -1,0 +1,16 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor Freelancer
+participant PaymentsService
+
+activate Freelancer
+Freelancer -> PaymentsService: Receive payments
+
+activate PaymentsService
+PaymentsService -> PaymentsService: payments
+PaymentsService --> Freelancer: Confirms payments is received
+
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor Employer
+participant ProjectService
+
+activate Employer
+Employer -> ProjectService: Upload file
+
+activate ProjectService
+ProjectService -> ProjectService: Uploading file
+ProjectService --> Employer: Confirms file is uploaded
+@enduml

@@ -1,0 +1,26 @@
+
+@startuml 
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor User
+participant Authenticate
+
+
+activate User
+User -> authenticate: write login information
+
+activate authenticate
+
+authenticate -> authenticate: check Password
+
+group Password wrong
+
+authenticate -> User: decline access
+end group
+group Password correct
+authenticate -> User: access success
+end group
+
+@enduml

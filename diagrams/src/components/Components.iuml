@@ -1,0 +1,16 @@
+@startuml Components
+
+[Users-service] as users
+[Authentication-service] as auth
+[Projects-service] as projects
+[Accounts-service] as accounts
+[Payments-service] as payments
+[Profile-service] as profiles
+[Audit-service] as audit
+[Workspace-service] as workspace
+[Client-service] as client
+[Gateway-service] as gateway
+[Bidding-service] as bidding
+[Chat-service] as chat
+
+@enduml

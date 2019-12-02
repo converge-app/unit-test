@@ -1,0 +1,235 @@
+%===============================================================================
+%NIX PILLE - INGEN ÆNDRINGER TILLADT I DENNE FIL
+%NIX PILLE - INGEN ÆNDRINGER TILLADT I DENNE FIL
+%NIX PILLE - INGEN ÆNDRINGER TILLADT I DENNE FIL
+%NIX PILLE - INGEN ÆNDRINGER TILLADT I DENNE FIL
+%NIX PILLE - INGEN ÆNDRINGER TILLADT I DENNE FIL
+%===============================================================================
+% Generelt
+\usepackage{import}						% Importér filer
+\usepackage[hidelinks]{hyperref}		% Links
+\usepackage[table]{xcolor}				% Farver
+
+%-------------------------------------------------------------------------------
+% Marginer
+\usepackage[top=2cm,bottom=3.75cm,left=2cm,right=2cm]{geometry}
+
+%-------------------------------------------------------------------------------
+% Typografi
+% http://www.tug.dk/FontCatalogue/sansseriffonts.html
+\usepackage[danish]{babel}				% Dansk sprog
+\usepackage[utf8]{inputenc}				% Typeface encoding
+\usepackage[T1]{fontenc}				% Mere encoding
+\usepackage[scaled]{helvet}				% Helvetica
+\renewcommand\familydefault{\sfdefault}	% Default
+\renewcommand*{\ttdefault}{pcr}		% Monospace typografi
+
+%-------------------------------------------------------------------------------
+% Flere referencer
+\makeatletter
+\let\thetitle\@title 		% Reference to title
+\let\theauthor\@author		% Reference to all authors
+\let\thedate\@date			% Reference to date
+\makeatother
+
+%-------------------------------------------------------------------------------
+% Automatisk navngivning
+\addto\captionsdanish{\renewcommand\contentsname{Indholdsfortegnelse}}
+
+%-------------------------------------------------------------------------------
+% Nummerering af overskrifter
+\setsecnumdepth{subsubsection}  % Dybden af nummerede overkrifter (part/chapter/section/subsection)
+\settocdepth{subsection}  % Dybden af overskrifter vist i indholdsfortegnelsen
+
+%-------------------------------------------------------------------------------
+% Kapitel udseende
+\definecolor{numbercolor}{gray}{0.7}  % Definerer farve til brug til Kapitel udseende
+\newif\ifchapternonum
+
+\makechapterstyle{jenor}{
+	\renewcommand\beforechapskip{-30pt}
+	\renewcommand\afterchapskip{10pt}
+	\renewcommand\printchaptername{}
+	\renewcommand\printchapternum{}
+	\renewcommand\printchapternonum{\chapternonumtrue}
+	\renewcommand\chaptitlefont{\fontfamily{pbk}\fontseries{db}\fontshape{n}\fontsize{25}{35}\selectfont\raggedright}
+	\renewcommand\chapnumfont{\fontfamily{pbk}\fontseries{m}\fontshape{n}\fontsize{1in}{0in}\selectfont\color{numbercolor}}
+	\renewcommand\printchaptertitle[1]{
+		\noindent
+		\ifchapternonum
+			\begin{tabularx}{\textwidth}{X}{
+				\parbox[b][30pt]{\linewidth}{
+					\chaptitlefont ##1
+				}
+			}
+			\end{tabularx}
+			\par\vskip2mm\hrule
+		\else
+			\begin{tabularx}{\textwidth}{Xl}{
+				\parbox[b]{\linewidth}{
+					\chaptitlefont ##1
+				}
+			} & \raisebox{-15pt}{
+				\chapnumfont\thechapter
+			}
+			\end{tabularx}
+			\par\vskip2mm\hrule
+		\fi
+	}
+}
+
+\chapterstyle{jenor}  % Valg af kapiteludseende
+
+%-------------------------------------------------------------------------------
+% Chapter text uden at være reelt chapter
+\newcommand{\fakeChapter}[1]{
+	\vspace{50pt}
+	\addcontentsline{toc}{chapter}{#1}
+	\begin{tabularx}{\textwidth}{X}{
+		\parbox[b][30pt]{\linewidth}{
+			\fontfamily{pbk}\fontseries{db}\fontshape{n}\fontsize{25}{35}\selectfont\raggedright #1
+		}
+	}
+	\end{tabularx}
+	\par\vskip2mm\hrule
+}
+
+%-------------------------------------------------------------------------------
+% Header/footer
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\usepackage{lastpage}
+\fancyhead[L]{\lhead{\includegraphics[height=1.4cm]{aulogo.png}}}
+\fancyhead[c]{\chead{}}
+\fancyhead[R]{\rhead{}}
+
+\fancyfoot[L]{\lfoot{
+	\textbf{Projektnavn:} Semesterprojekt 4 - IKT Gruppe 5\\
+	\textbf{Dokumentnavn:} \thetitle
+}}
+\fancyfoot[c]{\cfoot{}}
+\fancyfoot[R]{\rfoot{
+	\textbf{Dato:}
+		\ifdefined\frontpageDate
+			\frontpageDate\\
+		\else
+			\today\\
+		\fi
+	Side \textbf{\thepage} af \textbf{\pageref{LastPage}}
+}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{2cm}
+\setlength{\footskip}{20pt}
+\setlength\arrayrulewidth{1px}
+
+%-------------------------------------------------------------------------------
+% Billeder/figurer
+\usepackage{graphicx}  % Billeder
+\graphicspath{{Billeder/}}  % Billed placering
+\usepackage{float}  % Bedre float placeringer
+
+%-------------------------------------------------------------------------------
+% Kode
+\usepackage{listings}
+
+\definecolor{background}{rgb}{0.9,0.9,0.9}
+\definecolor{comment}{rgb}{0,0.6,0}
+\definecolor{string}{rgb}{0.58,0,0.82}
+
+\lstdefinestyle{customlststyle}{
+  backgroundcolor=\color{background},
+  commentstyle=\color{comment},
+  keywordstyle=\color{blue},
+  numberstyle=\tiny\color{gray},
+  rulecolor=\color{black},
+  stringstyle=\color{string},
+  showstringspaces=false,
+  basicstyle=\ttfamily,
+  breaklines=true,
+  captionpos=t,
+  extendedchars=true,
+  frame=tb,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  stepnumber=1,
+  tabsize=2,
+}
+
+\lstset{style=customlststyle}
+
+%-------------------------------------------------------------------------------
+% Caption setup
+\usepackage[font=small]{caption}
+\captionsetup[table]{skip=5pt,position=top}
+\captionsetup[figure]{skip=5pt}
+
+%-------------------------------------------------------------------------------
+% Tabeller
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\usepackage{pbox}
+
+%-------------------------------------------------------------------------------
+% Tillad brugen af subsubsubsection
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+
+%-------------------------------------------------------------------------------
+% Dato formattering
+\usepackage[useregional=numeric]{datetime2}
+
+%-------------------------------------------------------------------------------
+% Modificering automatiske lister (fx enumerate)
+\usepackage{enumitem}
+
+%-------------------------------------------------------------------------------
+% Referencer
+\usepackage[backend=bibtex,style=authoryear]{biblatex}
+\let\cite\parencite
+\setlength\bibitemsep{2\itemsep}
+
+%-------------------------------------------------------------------------------
+% Fjern automatisk indentering for nye afsnit
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+
+%-------------------------------------------------------------------------------
+% FixMe
+% Kommentarer og rettelser med \fxnote.
+% Med 'final' i stedet for 'draft' udløser hver note en error i den færdige rapport.
+\usepackage[footnote,draft,danish,silent,nomargin]{fixme}
+
+%-------------------------------------------------------------------------------
+% Billede Hack
+% Indsæt figurer nemt med \figur{Bredde}{Fil}{Figurtekst}{Label}
+\newcommand{\figur}[4]{
+	\begin{figure}[H] \centering
+		\includegraphics[width=#1\textwidth,keepaspectratio]{#2}
+		\caption{#3}
+		\label{#4}
+	\end{figure}
+}
+
+%-------------------------------------------------------------------------------
+% Orddeling
+\hyphenation{In-te-res-se e-le-ment}
+
+%-------------------------------------------------------------------------------
+% Versionshistorik
+\usepackage[owncaptions, nochapter]{vhistory}
+\renewcommand{\vhhistoryname}{Versionshistorik}
+\renewcommand{\vhversionname}{Version}
+\renewcommand{\vhdatename}{Dato}
+\renewcommand{\vhauthorname}{Forfatter(e)}
+\renewcommand{\vhchangename}{Beskrivelse}
+
+%-------------------------------------------------------------------------------
+% Gør det muligt at gennemstrege tekst
+\usepackage[normalem]{ulem}
+
+%-------------------------------------------------------------------------------
+% Paragraph spacing
+\setlength{\parskip}{1em}

@@ -1,0 +1,16 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor User
+participant ChatService
+
+activate User
+User -> ChatService: Select a user
+User -> ChatService: Delete user
+
+activate ChatService
+ChatService -> ChatService: Checking for user
+ChatService --> User: Confirms user is deleted
+@enduml

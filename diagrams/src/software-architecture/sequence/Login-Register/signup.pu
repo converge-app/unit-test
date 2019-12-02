@@ -1,0 +1,15 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+actor User
+participant Userservice
+
+activate User
+User -> Userservice: writes account information
+
+activate Userservice
+Userservice -> Userservice: Creates account 
+Userservice --> User:  Confirms account created
+
+@enduml

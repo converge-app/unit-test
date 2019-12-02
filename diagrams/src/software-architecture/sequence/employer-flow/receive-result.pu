@@ -1,0 +1,15 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor Employer
+participant ProjectService
+
+activate Employer
+Employer -> ProjectService: Receive results
+
+activate ProjectService
+ProjectService -> ProjectService: Checking results
+ProjectService --> Employer: Confirms results is Received
+@enduml

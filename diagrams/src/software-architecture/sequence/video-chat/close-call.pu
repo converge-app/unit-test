@@ -1,0 +1,15 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor User
+participant VideoChatService
+
+activate User
+User -> VideoChatService: Close the call
+
+activate VideoChatService
+VideoChatService -> VideoChatService:closing the call 
+VideoChatService --> User:Confirms closing the call
+@enduml

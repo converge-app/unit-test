@@ -1,0 +1,59 @@
+@startuml
+
+skinparam monochrome true
+skinparam componentStyle uml2
+
+left to right direction
+package "deployment diagram" as sa {
+
+node "<<device>>\n PC " as presentation {
+node "<<execution Environment>>\n  React"{
+  
+[Login] 
+[Signup]
+[Search]
+[portfolio]
+[Chat]
+[Dashboard]
+[Settings]
+[Categories]
+[Payments]
+[Video chat]
+[Jobs]
+  
+}
+}
+node "<<device>>\n Server" as webAPI{
+  
+node  "<<execution Environment>>\n  ASP.NET Core Web API" {
+  
+  [Userservice] 
+  [SearchService] 
+  [PortfolioService]
+  [ChatService]
+  [DashboardService] 
+  [SettingsService] 
+  [CategoriesService]
+  [PaymentsService]
+  [VideoChatService] 
+  [JobsService]
+  
+  
+  }
+  }
+node "<<device>>\n Server" as mongodb{
+node  "<<execution Environment>>\n  Mongo Database" {
+  
+  [Data persistance] 
+
+  }
+  }
+  
+}
+presentation --> webAPI
+webAPI --> mongodb
+webAPI -left-> presentation
+presentation ----[hidden]-->webAPI
+webAPI --[hidden]---->mongodb
+
+@enduml

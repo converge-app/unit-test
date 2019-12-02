@@ -1,0 +1,69 @@
+@startuml
+
+skinparam monochrome true
+skinparam componentStyle uml2
+left to right direction 
+
+
+package "Komponent diagram" as ma{
+folder "Presentation" as ts{
+  
+[Login]
+[Signup]
+[Search]
+[portfolio]
+[Chat]
+[Dashboard]
+[Settings]
+[Categories]
+[Payments]
+[Video chat]
+[Jobs]
+  
+}
+
+
+cloud {
+  
+  [Userservice] -up- userAPI
+  [SearchService] -up- searchAPI
+  [PortfolioService] -up- portfolioAPI
+  [ChatService] -up- chatAPI
+  [DashboardService] -up- dashboardAPI 
+  [SettingsService] -up-  settingsAPI
+  [CategoriesService] -up- categoriesAPI
+  [PaymentsService] -up- paymentsAPI
+  [VideoChatService] -up- videochatAPI
+  [JobsService] -up- JobsAPI
+  
+  
+  }
+
+  [Login] --( userAPI
+  [Signup] --( userAPI
+  [Search] --( searchAPI
+  [portfolio] --(  portfolioAPI
+  [Chat] --( chatAPI
+  [Dashboard] -( dashboardAPI 
+  [Settings] -( settingsAPI
+  [Categories] -( categoriesAPI
+  [Payments] -( paymentsAPI
+  [Video chat] -( videochatAPI
+  [Jobs] -( JobsAPI
+  
+  
+  [Userservice] --> [Data persistering]
+  [SearchService] --> [Data persistering]
+  [PortfolioService] --> [Data persistering]
+  [ChatService] --> [Data persistering]
+  [DashboardService] --> [Data persistering]
+  [SettingsService] --> [Data persistering]
+  [CategoriesService] --> [Data persistering]
+  [PaymentsService] --> [Data persistering]
+  [VideoChatService] --> [Data persistering]
+  [JobsService] --> [Data persistering]
+  
+
+}
+
+@enduml

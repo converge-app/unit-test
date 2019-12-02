@@ -1,0 +1,15 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor Employer
+participant ProjectService
+
+activate Employer
+Employer -> ProjectService: Project information
+
+activate ProjectService
+ProjectService -> ProjectService: Creates new project
+ProjectService --> Employer: Confirms Projectet created
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor User
+participant PaymentsService
+
+activate User
+User -> PaymentsService: Check balance
+
+activate PaymentsService
+PaymentsService -> PaymentsService: Checking acount balance
+PaymentsService -> PaymentsService: Deposit or withdraw
+PaymentsService --> User: Balance amount
+@enduml

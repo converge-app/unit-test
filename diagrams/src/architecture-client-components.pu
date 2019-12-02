@@ -1,0 +1,24 @@
+@startuml
+
+skinparam BackgroundColor transparent
+skinparam Monochrome true
+skinparam shadowing false
+
+cloud {
+    !include components/Components.iuml
+}
+
+interface "client" as person
+
+person  --> gateway : use
+gateway --> auth : use
+gateway --> users : use
+gateway --> client : use
+gateway --> projects : use
+gateway --> workspace : use
+gateway --> profiles : use
+gateway --> accounts : use
+gateway --> payments : use
+gateway --> audit : use
+
+@enduml

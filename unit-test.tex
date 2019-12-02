@@ -1,0 +1,30 @@
+\documentclass[a4paper,openany]{memoir}
+
+%*******************************************************************************
+% ÆNDRINGER LAVES HER
+%*******************************************************************************
+\title{Unit test}
+% Husk at opdatere "AUTHOR" og dato i filen "00_VersionHistory".
+
+%-------------------------------------------------------------------------------
+% Sæt data til forside. Kan kommenteres ind efter behov.
+%\newcommand{\frontpageDate}{DD-MM-YYYY}  % Samme dato der vises i sidefod
+%\newcommand{\frontpageImage}{ImageName.png}
+%\newcommand{\frontpageCharacters}{NumberOfCharacters}
+%*******************************************************************************
+
+% Inkluder preambles
+\usepackage{latex-preamble/SharedPreamble}
+\usepackage{PrivatePreamble}
+
+\begin{document}
+	\import{Sektioner/}{Forside}  \newpage
+	\tableofcontents\thispagestyle{fancy}
+	\import{Sektioner/}{00_VersionHistory}  \newpage
+	\import{Sektioner/}{indledning}  \newpage
+	\import{Sektioner/}{converge-SPA}  \newpage
+	\import{Sektioner/}{converge-cluster}  \newpage
+	
+	\phantomsection \addcontentsline{toc}{section}{Referencer}
+	\printbibliography
+\end{document}

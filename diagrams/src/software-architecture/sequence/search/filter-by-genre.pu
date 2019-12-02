@@ -1,0 +1,16 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor User
+participant SearchService
+
+activate User
+User -> SearchService: filter by genre
+
+activate SearchService
+SearchService -> SearchService: filter search by genre
+SearchService --> User: Display result
+
+@enduml

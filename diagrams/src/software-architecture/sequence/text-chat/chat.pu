@@ -1,0 +1,16 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor User
+participant ChatService
+
+activate User
+User -> ChatService: Select friend
+User -> ChatService: Type message 
+
+activate ChatService
+ChatService -> ChatService: send message
+ChatService --> User: Display message 
+@enduml

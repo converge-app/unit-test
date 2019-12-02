@@ -1,0 +1,6 @@
+[submodule "latex-preamble"]
+	path = latex-preamble
+	url = git@github.com:converge-app/latex-preamble.git
+[submodule "diagrams"]
+	path = diagrams
+	url = git@github.com:converge-app/diagrams.git

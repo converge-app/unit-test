@@ -1,0 +1,16 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor User
+participant ChatService
+
+activate User
+User -> ChatService: Select a user
+User -> ChatService: request another user for contact
+
+activate ChatService
+ChatService -> ChatService: send request
+ChatService --> User: Confirms request has been sent
+@enduml

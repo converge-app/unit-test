@@ -1,0 +1,16 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor User
+participant VideoChatService
+
+activate User
+User -> VideoChatService: Select friend
+User -> VideoChatService: Open application
+
+activate VideoChatService
+VideoChatService -> VideoChatService:acces webcame 
+VideoChatService --> User: Display view
+@enduml

@@ -1,0 +1,24 @@
+@startuml 
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor User
+participant authenticate
+
+activate User
+User -> authenticate: Choosen google
+
+activate authenticate
+
+authenticate -> authenticate: check account
+
+group Account not exist
+
+authenticate -> User: decline access
+end group
+group Account not exist
+authenticate -> User: access success
+end group
+
+@enduml

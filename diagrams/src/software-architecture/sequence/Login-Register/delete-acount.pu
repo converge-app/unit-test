@@ -1,0 +1,17 @@
+
+@startuml 
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor User
+participant Userservice
+
+activate User
+User -> Userservice: Delete account
+
+activate Userservice
+
+Userservice --> User: account is deleted 
+
+@enduml

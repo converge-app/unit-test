@@ -1,0 +1,16 @@
+@startuml
+hide footbox
+autonumber "<b>[0]"
+skinparam monochrome true
+
+actor Freelancer
+participant JobsService
+
+activate Freelancer
+Freelancer -> JobsService: comment on a project
+
+activate JobsService
+JobsService -> JobsService: Save comment
+JobsService --> Freelancer: Confirms comment is added
+
+@enduml
