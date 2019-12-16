@@ -1,0 +1,50 @@
+on:
+  push:
+name: Create release
+
+jobs:
+  build:
+    name: Create release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fix up git URLs
+        run: echo -e '[url "https://github.com/"]\n  insteadOf = "git@github.com:"' >> ~/.gitconfig
+
+      - uses: actions/checkout@v1
+        name: "Checkout files"
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: true
+
+      - name: Fetch tags and master for GitVersion
+        run: |
+          git fetch --tags
+          git branch --create-reflog master origin/master
+
+      - name: Install GitVersion
+        uses: gittools/actions/setup-gitversion@v0.3
+        with:
+          versionSpec: "5.1.x"
+
+      - name: Use GitVersion
+        id: gitversion # step id used as reference for output values
+        uses: gittools/actions/execute-gitversion@v0.3
+
+      - name: Get root latex file
+        id: latex-root
+        run: |
+          echo "##[set-output name=filename;]$(find * | grep '^[^\\/]*.tex$')"
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@master
+        with:
+          root_file: ${{ steps.latex-root.outputs.filename }}
+
+      - name: Release PDF
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./*.pdf
+          tag: ${{ steps.gitversion.outputs.semVer }}
+          overwrite: true
+          file_glob: true
